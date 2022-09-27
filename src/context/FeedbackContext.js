@@ -38,17 +38,7 @@ export const FeedbackProvider = ({ children }) => {
 
   // Update a feedback item
   const updateFeedback = async (id, updItem) => {
-    const response = await fetch(`/feedback/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updItem), // we update it in the form of json
-    })
-
-    const data = await response.json()
-
-    // N need to spread the item object
+    // Update the matched feedback
     setFeedback(feedback.map((item) => (item.id === id ? data : item)))
 
     // After we successfully updated the feedback we change the mode to its default meaning the editing will be false
