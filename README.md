@@ -1,5 +1,7 @@
 # React Feedback App
 
+Watch Live -> https://feedbackappp.netlify.app/
+
 A feedback app that allows you to send a feedback
 
 ### Install dependencies
@@ -11,7 +13,5 @@ npm install
 ### Run
 
 ```bash
-npm run dev
+npm start
 ```
-
-This will run JSON-server on port :5000 and React on port :3000
