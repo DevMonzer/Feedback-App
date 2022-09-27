@@ -19,43 +19,15 @@ export const FeedbackProvider = ({ children }) => {
 
   // Fetch feedbacks
   const fetchFeedback = async () => {
-    // const response = await fetch(`/feedback?_sort=id&_order=desc`)
-    // const data = await response.json()
-
     setFeedback(database.feedback)
     setIsLoading(false)
   }
-
-  // // Add a new feedback (we make a post request) and we setFeedback using the data that we got out of the server
-  // const addFeedback = async (newFeedback) => {
-  //   const response = await fetch('/feedback', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(newFeedback), // we add it in the form of json
-  //   })
-
-  //   const data = await response.json()
-
-  //   setFeedback([data, ...feedback])
-  // }
 
   // Add a new feedback
   const addFeedback = async (newFeedback) => {
     newFeedback.id = uuidv4()
     setFeedback([newFeedback, ...feedback])
   }
-
-  // // Delete a feedback
-  // const deleteFeedback = async (id) => {
-  //   if (window.confirm('Are you sure you want to delete?')) {
-  //     await fetch(`/feedback/${id}`, { method: 'DELETE' })
-
-  //     // Delete the feedback that matches the given id and return the rest
-  //     setFeedback(feedback.filter((item) => item.id !== id))
-  //   }
-  // }
 
   const deleteFeedback = async (id) => {
     if (window.confirm('Are you sure you want to delete?')) {
