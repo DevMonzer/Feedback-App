@@ -1,18 +1,45 @@
 import { createContext, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import database from '../db.json'
+import database from '../../db.json'
+
 const FeedbackContext = createContext()
 
-console.log(database.feedback)
 export const FeedbackProvider = ({ children }) => {
-  const [feedback, setFeedback] = useState([])
+  const [feedback, setFeedback] = useState([
+    {
+      id: 1,
+      rating: 10,
+      text: 'This is feedback item 1 coming from the backend',
+    },
+    {
+      id: 2,
+      rating: 8,
+      text: 'This is feedback item 2 coming from the backend',
+    },
+    {
+      text: 'This is feedback item 3 coming from the backend server',
+      rating: 10,
+      id: 3,
+    },
+    {
+      text: 'This app is somewhat good',
+      rating: 9,
+      id: 4,
+    },
+    {
+      rating: 10,
+      text: "I'm submitting this feedback from the api",
+      id: 5,
+    },
+  ])
+  // const [feedback, setFeedback] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [feedbackEdit, setFeedbackEdit] = useState({
     item: {},
     edit: false,
   })
 
-  // Fetch the data
+  // Fetch the data from the json server once the page is loaded
   useEffect(() => {
     fetchFeedback()
   }, [])
@@ -21,8 +48,9 @@ export const FeedbackProvider = ({ children }) => {
   const fetchFeedback = async () => {
     // const response = await fetch(`/feedback?_sort=id&_order=desc`)
     // const data = await response.json()
+    const data = database.json()
 
-    setFeedback(database.feedback)
+    setFeedback(data)
     setIsLoading(false)
   }
 
