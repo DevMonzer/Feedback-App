@@ -1,8 +1,35 @@
 import { createContext, useEffect, useState } from 'react'
-
+import { v4 as uuidv4 } from 'uuid'
 const FeedbackContext = createContext()
 
 export const FeedbackProvider = ({ children }) => {
+  const [feedback1, setFeedback1] = useState([
+    {
+      id: 1,
+      rating: 10,
+      text: 'This is feedback item 1 coming from the backend',
+    },
+    {
+      id: 2,
+      rating: 8,
+      text: 'This is feedback item 2 coming from the backend',
+    },
+    {
+      text: 'This is feedback item 3 coming from the backend server',
+      rating: 10,
+      id: 3,
+    },
+    {
+      text: 'This app is somewhat good',
+      rating: 9,
+      id: 4,
+    },
+    {
+      rating: 10,
+      text: "I'm submitting this feedback from the api",
+      id: 5,
+    },
+  ])
   const [feedback, setFeedback] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [feedbackEdit, setFeedbackEdit] = useState({
@@ -46,6 +73,13 @@ export const FeedbackProvider = ({ children }) => {
 
       // Delete the feedback that matches the given id and return the rest
       setFeedback(feedback.filter((item) => item.id !== id))
+    }
+  }
+
+  const deleteFeedback1 = async (id) => {
+    if (window.confirm('Are you sure you want to delete?')) {
+      // Delete the feedback that matches the given id and return the rest
+      setFeedback1(feedback.filter((item) => item.id !== id))
     }
   }
 
