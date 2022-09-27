@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import FeedbackList from './components/FeedbackList'
+
 import Header from './components/Header'
 
 const App = () => {
@@ -6,7 +8,16 @@ const App = () => {
     <Router>
       <Header />
       <div className='container'>
-        <Routes></Routes>
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <>
+                <FeedbackList />
+              </>
+            }
+          ></Route>
+        </Routes>
       </div>
     </Router>
   )
