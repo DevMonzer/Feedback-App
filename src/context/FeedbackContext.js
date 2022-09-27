@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid'
 import database from '../db.json'
 const FeedbackContext = createContext()
 
-console.log(database.feedback)
 export const FeedbackProvider = ({ children }) => {
   const [feedback, setFeedback] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -39,7 +38,7 @@ export const FeedbackProvider = ({ children }) => {
   // Update a feedback item
   const updateFeedback = async (id, updItem) => {
     // Update the matched feedback
-    setFeedback(feedback.map((item) => (item.id === id ? data : item)))
+    setFeedback(feedback.map((item) => (item.id === id ? updItem : item)))
 
     // After we successfully updated the feedback we change the mode to its default meaning the editing will be false
     setFeedbackEdit({
