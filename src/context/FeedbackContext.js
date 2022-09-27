@@ -66,6 +66,12 @@ export const FeedbackProvider = ({ children }) => {
     setFeedback([data, ...feedback])
   }
 
+  // Add a new feedback
+  const addFeedback1 = async (newFeedback) => {
+    newFeedback.id = uuidv4()
+    setFeedback([newFeedback, ...feedback])
+  }
+
   // Delete a feedback
   const deleteFeedback = async (id) => {
     if (window.confirm('Are you sure you want to delete?')) {
